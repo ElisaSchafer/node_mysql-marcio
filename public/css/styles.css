@@ -45,3 +45,37 @@ main > h2 {
     margin-top: 1rem;
 }
 
+.buttons {
+    margin-top: 0.5rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.buttons a{
+    display: block;
+    text-decoration: none;
+    padding: .5rem;
+    border-radius: .5rem;
+}
+
+.buttons .mais {
+    border: 1px solid #007bff;
+    background: #007bff;
+    color: #fff;
+}
+
+.buttons .mais:hover {
+    background: #fff;
+    color: #007bff;
+}
+
+.buttons .editar {
+    border: 1px solid #ffc107;
+    background: #ffc107;
+    color: black;
+}
+
+.buttons .mais:hover {
+    background: #fff;
+    color: #ffc107;
+}

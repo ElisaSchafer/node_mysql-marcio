@@ -16,6 +16,24 @@ app.use(express.urlencoded({
 
 app.use(express.json())
 
+app.post("/edit/save", (requisicao, resposta) => {
+    const { id, title, pageqty } = requisicao.body
+
+    const sql = `
+        UPDATE books
+        SET title = '${title}', pageqty = '${pageqty}'
+        WHERE id = ${id}
+    `
+
+    conn.query(sql, (error) => {
+        if (error) {
+            return console.log(error)
+        }
+
+        resposta.redirect('/')
+    })
+})
+
 app.post('/register/save', (requisicao, resposta) => {
     const { title, pageqty } = requisicao.body
 
@@ -39,12 +57,29 @@ app.post('/register/save', (requisicao, resposta) => {
     })
 })
 
+app.get("/edit/:id", (requisicao, resposta) => {
+    const id = requisicao.params.id
+
+    const sql = `
+        SELECT * FROM books
+        WHERE id = ${id}
+    `
+
+    conn.query(sql, (error, data) => {
+        if (error) {
+            return console.log(error)
+        }
+
+        resposta.render('edit', { book })
+    })
+})
+
 app.get("/book/:id", (requisicao, resposta) => {
     const id = requisicao.params.id
 
     const sql = `
         SELECT * FROM books
-        WHERE id=${id}
+        WHERE id = ${id}
     `
 
     conn.query(sql, (error, data) => {
