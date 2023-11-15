@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+body {
+    padding: 2rem;
+}
+
+ul, li {
+    list-style: none;
+}
+
+header {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 1rem;
+}
+
+header h1 {
+    margin-bottom: 1rem;
+}
+
+header ul {
+    display: flex;
+    gap: 3rem;
+}
+
+main > h2 {
+    margin-bottom: 1rem;
+}
+
+.book {
+    border: 1px solid #ccc;
+    width: 38rem;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.book + .book {
+    margin-top: 1rem;
+}
+
