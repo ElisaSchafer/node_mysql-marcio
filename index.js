@@ -16,6 +16,23 @@ app.use(express.urlencoded({
 
 app.use(express.json())
 
+app.post('/delete', (requisicao, resposta) => {
+    const { id } = requisicao.body
+
+    const sql = `
+        DELETE FROM books
+        WHERE id = ${id}
+    `
+
+    conn.query(sql, (error) => {
+        if (error) {
+            return console.log(error)
+        }
+
+        resposta.redirect('/')
+    })
+})
+
 app.post("/edit/save", (requisicao, resposta) => {
     const { id, title, pageqty } = requisicao.body
 
@@ -69,6 +86,8 @@ app.get("/edit/:id", (requisicao, resposta) => {
         if (error) {
             return console.log(error)
         }
+
+        const book = data[0]
 
         resposta.render('edit', { book })
     })
